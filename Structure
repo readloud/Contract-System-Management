@@ -1,0 +1,474 @@
+---
+
+## 🌳 Complete Folder Tree Structure
+
+```
+contract-management-system/
+│
+├── .gitignore
+├── .env.example
+├── README.md
+├── docker-compose.yml
+├── docker-compose.prod.yml
+│
+├── backend/
+│   ├── .dockerignore
+│   ├── .env.development
+│   ├── .env.docker
+│   ├── .env.example
+│   ├── .env.production
+│   ├── .env.test
+│   ├── .eslintrc.js
+│   ├── .prettierrc
+│   ├── Dockerfile
+│   ├── nest-cli.json
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── tsconfig.json
+│   ├── tsconfig.build.json
+│   │
+│   ├── src/
+│   │   ├── main.ts
+│   │   ├── app.module.ts
+│   │   ├── health.controller.ts
+│   │   │
+│   │   ├── common/
+│   │   │   ├── guards/
+│   │   │   │   ├── jwt-auth.guard.ts
+│   │   │   │   └── roles.guard.ts
+│   │   │   ├── interceptors/
+│   │   │   │   ├── logging.interceptor.ts
+│   │   │   │   └── transform.interceptor.ts
+│   │   │   ├── decorators/
+│   │   │   │   ├── current-user.decorator.ts
+│   │   │   │   └── roles.decorator.ts
+│   │   │   ├── filters/
+│   │   │   │   └── http-exception.filter.ts
+│   │   │   └── pipes/
+│   │   │       └── validation.pipe.ts
+│   │   │
+│   │   ├── config/
+│   │   │   ├── database.config.ts
+│   │   │   ├── redis.config.ts
+│   │   │   ├── app.config.ts
+│   │   │   └── data-source.ts
+│   │   │
+│   │   ├── database/
+│   │   │   ├── migrations/
+│   │   │   │   ├── 1704067200000-CreateUsersTable.ts
+│   │   │   │   ├── 1704067300000-CreateContractsTable.ts
+│   │   │   │   ├── 1704067400000-CreateContractVersionsTable.ts
+│   │   │   │   ├── 1704067500000-CreateRedliningTables.ts
+│   │   │   │   ├── 1704067600000-CreateSignaturesTable.ts
+│   │   │   │   ├── 1704067700000-CreateEMeteraiLogsTable.ts
+│   │   │   │   ├── 1704067800000-CreateNotificationsTable.ts
+│   │   │   │   └── 1704067900000-CreateYjsDocumentsTable.ts
+│   │   │   └── seeders/
+│   │   │       ├── seed.ts
+│   │   │       ├── seed-roles.ts
+│   │   │       ├── seed-users.ts
+│   │   │       ├── seed-templates.ts
+│   │   │       └── seed-clauses.ts
+│   │   │
+│   │   ├── modules/
+│   │   │   ├── auth/
+│   │   │   │   ├── auth.module.ts
+│   │   │   │   ├── auth.service.ts
+│   │   │   │   ├── auth.controller.ts
+│   │   │   │   ├── strategies/
+│   │   │   │   │   ├── jwt.strategy.ts
+│   │   │   │   │   └── local.strategy.ts
+│   │   │   │   └── dto/
+│   │   │   │       ├── login.dto.ts
+│   │   │   │       ├── register.dto.ts
+│   │   │   │       └── refresh-token.dto.ts
+│   │   │   │
+│   │   │   ├── users/
+│   │   │   │   ├── users.module.ts
+│   │   │   │   ├── users.service.ts
+│   │   │   │   ├── users.controller.ts
+│   │   │   │   ├── entities/
+│   │   │   │   │   └── user.entity.ts
+│   │   │   │   └── dto/
+│   │   │   │       ├── create-user.dto.ts
+│   │   │   │       └── update-user.dto.ts
+│   │   │   │
+│   │   │   ├── contracts/
+│   │   │   │   ├── contracts.module.ts
+│   │   │   │   ├── contracts.service.ts
+│   │   │   │   ├── contracts.controller.ts
+│   │   │   │   ├── entities/
+│   │   │   │   │   ├── contract.entity.ts
+│   │   │   │   │   ├── contract-version.entity.ts
+│   │   │   │   │   └── contract-metadata.entity.ts
+│   │   │   │   └── dto/
+│   │   │   │       ├── create-contract.dto.ts
+│   │   │   │       └── update-contract.dto.ts
+│   │   │   │
+│   │   │   ├── redlining/
+│   │   │   │   ├── redlining.module.ts
+│   │   │   │   ├── redlining.service.ts
+│   │   │   │   ├── redlining.controller.ts
+│   │   │   │   ├── entities/
+│   │   │   │   │   ├── redlining-session.entity.ts
+│   │   │   │   │   ├── redlining-change.entity.ts
+│   │   │   │   │   └── redlining-comment.entity.ts
+│   │   │   │   ├── dto/
+│   │   │   │   │   ├── create-session.dto.ts
+│   │   │   │   │   └── resolve-change.dto.ts
+│   │   │   │   └── services/
+│   │   │   │       ├── diff.service.ts
+│   │   │   │       └── pdf-text-extractor.ts
+│   │   │   │
+│   │   │   ├── documents/
+│   │   │   │   ├── documents.module.ts
+│   │   │   │   ├── documents.service.ts
+│   │   │   │   ├── documents.controller.ts
+│   │   │   │   └── entities/
+│   │   │   │       └── document.entity.ts
+│   │   │   │
+│   │   │   ├── signatures/
+│   │   │   │   ├── signatures.module.ts
+│   │   │   │   ├── signatures.service.ts
+│   │   │   │   ├── signatures.controller.ts
+│   │   │   │   ├── entities/
+│   │   │   │   │   └── signature-request.entity.ts
+│   │   │   │   ├── dto/
+│   │   │   │   │   └── signing-request.dto.ts
+│   │   │   │   └── providers/
+│   │   │   │       ├── privy.provider.ts
+│   │   │   │       ├── peruri.provider.ts
+│   │   │   │       ├── vida.provider.ts
+│   │   │   │       └── tilaka.provider.ts
+│   │   │   │
+│   │   │   ├── e-meterai/
+│   │   │   │   ├── e-meterai.module.ts
+│   │   │   │   ├── e-meterai.service.ts
+│   │   │   │   ├── e-meterai.controller.ts
+│   │   │   │   ├── entities/
+│   │   │   │   │   └── meterai-log.entity.ts
+│   │   │   │   └── dto/
+│   │   │   │       └── apply-meterai.dto.ts
+│   │   │   │
+│   │   │   ├── notifications/
+│   │   │   │   ├── notifications.module.ts
+│   │   │   │   ├── notifications.service.ts
+│   │   │   │   ├── notifications.controller.ts
+│   │   │   │   ├── entities/
+│   │   │   │   │   └── notification.entity.ts
+│   │   │   │   └── providers/
+│   │   │   │       ├── sendgrid.provider.ts
+│   │   │   │       └── whatsapp.provider.ts
+│   │   │   │
+│   │   │   └── workflows/
+│   │   │       ├── workflows.module.ts
+│   │   │       ├── workflows.service.ts
+│   │   │       ├── workflows.controller.ts
+│   │   │       ├── entities/
+│   │   │       │   ├── approval-workflow.entity.ts
+│   │   │       │   └── approval-history.entity.ts
+│   │   │       └── dto/
+│   │   │           └── workflow.dto.ts
+│   │   │
+│   │   └── utils/
+│   │       ├── encryption.ts
+│   │       ├── s3-client.ts
+│   │       └── helpers.ts
+│   │
+│   └── test/
+│       ├── jest-e2e.json
+│       ├── app.e2e-spec.ts
+│       ├── auth.e2e-spec.ts
+│       └── contracts.e2e-spec.ts
+│
+├── frontend/
+│   ├── .dockerignore
+│   ├── .env.development
+│   ├── .env.docker
+│   ├── .env.example
+│   ├── .env.production
+│   ├── .env.local
+│   ├── .eslintrc.json
+│   ├── Dockerfile
+│   ├── next-env.d.ts
+│   ├── next.config.js
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
+│   ├── tsconfig.json
+│   │
+│   ├── public/
+│   │   ├── favicon.ico
+│   │   ├── logo.png
+│   │   ├── og-image.png
+│   │   └── icons/
+│   │       ├── icon-192.png
+│   │       └── icon-512.png
+│   │
+│   ├── app/
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   │
+│   │   ├── (auth)/
+│   │   │   ├── layout.tsx
+│   │   │   ├── login/
+│   │   │   │   └── page.tsx
+│   │   │   ├── register/
+│   │   │   │   └── page.tsx
+│   │   │   └── forgot-password/
+│   │   │       └── page.tsx
+│   │   │
+│   │   ├── (dashboard)/
+│   │   │   ├── layout.tsx
+│   │   │   ├── dashboard/
+│   │   │   │   └── page.tsx
+│   │   │   ├── contracts/
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── [id]/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   ├── edit/
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── collaborate/
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── sign/
+│   │   │   │   │       └── page.tsx
+│   │   │   │   └── new/
+│   │   │   │       └── page.tsx
+│   │   │   ├── templates/
+│   │   │   │   └── page.tsx
+│   │   │   ├── reports/
+│   │   │   │   └── page.tsx
+│   │   │   ├── settings/
+│   │   │   │   └── page.tsx
+│   │   │   └── profile/
+│   │   │       └── page.tsx
+│   │   │
+│   │   └── api/
+│   │       ├── auth/
+│   │       │   └── [...nextauth]/
+│   │       │       └── route.ts
+│   │       ├── contracts/
+│   │       │   └── route.ts
+│   │       ├── redlining/
+│   │       │   └── route.ts
+│   │       └── webhooks/
+│   │           ├── privy/
+│   │           │   └── route.ts
+│   │           └── peruri/
+│   │               └── route.ts
+│   │
+│   ├── components/
+│   │   ├── ui/
+│   │   │   ├── Button.tsx
+│   │   │   ├── Card.tsx
+│   │   │   ├── Input.tsx
+│   │   │   ├── Modal.tsx
+│   │   │   ├── Table.tsx
+│   │   │   ├── Spinner.tsx
+│   │   │   ├── Toast.tsx
+│   │   │   ├── Tabs.tsx
+│   │   │   └── Dropdown.tsx
+│   │   │
+│   │   ├── contracts/
+│   │   │   ├── ContractList.tsx
+│   │   │   ├── ContractCard.tsx
+│   │   │   ├── ContractDetail.tsx
+│   │   │   ├── ContractForm.tsx
+│   │   │   ├── ContractFilters.tsx
+│   │   │   ├── ContractStatusBadge.tsx
+│   │   │   └── RedliningViewer.tsx
+│   │   │
+│   │   ├── editor/
+│   │   │   ├── CollaborativeEditor.tsx
+│   │   │   ├── YjsProvider.tsx
+│   │   │   ├── Awareness.tsx
+│   │   │   ├── Toolbar.tsx
+│   │   │   └── extensions/
+│   │   │       ├── CollaborationCursor.ts
+│   │   │       └── TrackChanges.ts
+│   │   │
+│   │   ├── signature/
+│   │   │   ├── SigningModal.tsx
+│   │   │   ├── SignaturePad.tsx
+│   │   │   ├── MeteraiStamp.tsx
+│   │   │   └── VerificationPanel.tsx
+│   │   │
+│   │   ├── layout/
+│   │   │   ├── Sidebar.tsx
+│   │   │   ├── Header.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── ProtectedRoute.tsx
+│   │   │   ├── Navigation.tsx
+│   │   │   └── MobileMenu.tsx
+│   │   │
+│   │   ├── dashboard/
+│   │   │   ├── StatsCard.tsx
+│   │   │   ├── RecentContracts.tsx
+│   │   │   ├── ExpiringContracts.tsx
+│   │   │   └── ActivityChart.tsx
+│   │   │
+│   │   └── forms/
+│   │       ├── TemplateSelector.tsx
+│   │       ├── ClauseLibrary.tsx
+│   │       └── SignerForm.tsx
+│   │
+│   ├── lib/
+│   │   ├── api/
+│   │   │   ├── client.ts
+│   │   │   ├── auth.ts
+│   │   │   ├── contracts.ts
+│   │   │   ├── redlining.ts
+│   │   │   └── signatures.ts
+│   │   │
+│   │   ├── hooks/
+│   │   │   ├── useAuth.ts
+│   │   │   ├── useContracts.ts
+│   │   │   ├── useRedlining.ts
+│   │   │   ├── useCollaboration.ts
+│   │   │   ├── useNotifications.ts
+│   │   │   └── useWebSocket.ts
+│   │   │
+│   │   ├── utils/
+│   │   │   ├── formatters.ts
+│   │   │   ├── validators.ts
+│   │   │   ├── pdf-diff.ts
+│   │   │   ├── encryption.ts
+│   │   │   └── helpers.ts
+│   │   │
+│   │   ├── constants/
+│   │   │   ├── roles.ts
+│   │   │   ├── contract-types.ts
+│   │   │   └── statuses.ts
+│   │   │
+│   │   └── stores/
+│   │       ├── authStore.ts
+│   │       ├── contractStore.ts
+│   │       └── uiStore.ts
+│   │
+│   ├── types/
+│   │   ├── contract.ts
+│   │   ├── user.ts
+│   │   ├── redlining.ts
+│   │   ├── signature.ts
+│   │   ├── api.ts
+│   │   └── next-auth.d.ts
+│   │
+│   └── styles/
+│       ├── globals.css
+│       ├── components.css
+│       └── editor.css
+│
+├── realtime/
+│   ├── .dockerignore
+│   ├── .env.development
+│   ├── .env.docker
+│   ├── .env.example
+│   ├── .env.production
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── tsconfig.json
+│   │
+│   └── src/
+│       └── index.ts
+│
+├── nginx/
+│   ├── nginx.conf
+│   └── nginx.prod.conf
+│
+├── monitoring/
+│   ├── prometheus.yml
+│   ├── alerts.yml
+│   └── grafana/
+│       ├── dashboards/
+│       │   ├── cms-overview.json
+│       │   ├── cms-contracts.json
+│       │   └── cms-performance.json
+│       └── datasources/
+│           └── prometheus.yml
+│
+├── backup/
+│   └── postgres/
+│       └── .gitkeep
+│
+├── scripts/
+│   ├── backup.sh
+│   ├── restore.sh
+│   ├── deploy.sh
+│   ├── healthcheck.sh
+│   └── migrate.sh
+│
+└── docs/
+    ├── API.md
+    ├── DEPLOYMENT.md
+    ├── DATABASE.md
+    ├── INTEGRATION.md
+    └── USER_GUIDE.md
+```
+
+---
+
+## 📊 Statistik Folder & File
+
+| Komponen | Jumlah File | Jumlah Folder |
+|----------|-------------|---------------|
+| **Backend** | ~85 files | ~30 folders |
+| **Frontend** | ~70 files | ~25 folders |
+| **Realtime** | ~5 files | ~2 folders |
+| **Configurations** | ~15 files | ~5 folders |
+| **Documentation** | ~5 files | ~1 folder |
+| **Total** | **~180 files** | **~63 folders** |
+
+---
+
+## 🚀 Perintah untuk Generate Folder Tree
+
+```bash
+# Install tree command (if not installed)
+sudo apt-get install tree   # Ubuntu/Debian
+brew install tree            # macOS
+
+# Generate tree structure
+tree -L 4 -I "node_modules|dist|.next|coverage|.git" > folder-tree.txt
+
+# Or with specific options
+tree -L 5 -I "node_modules|.git|*.log|*.lock" -d --dirsfirst
+
+# Save to file with details
+tree -h -L 4 --du > folder-structure.md
+```
+
+---
+
+## 📋 Ringkasan File yang Telah Dibuat
+
+| No | File | Status |
+|----|------|--------|
+| 1 | `docker-compose.yml` | ✅ |
+| 2 | `docker-compose.prod.yml` | ✅ |
+| 3 | `backend/Dockerfile` | ✅ |
+| 4 | `frontend/Dockerfile` | ✅ |
+| 5 | `realtime/Dockerfile` | ✅ |
+| 6 | `backend/.env.example` | ✅ |
+| 7 | `frontend/.env.example` | ✅ |
+| 8 | `realtime/.env.example` | ✅ |
+| 9 | `nginx/nginx.conf` | ✅ |
+| 10 | `nginx/nginx.prod.conf` | ✅ |
+| 11 | `monitoring/prometheus.yml` | ✅ |
+| 12 | `README.md` | ✅ |
+| 13 | `backend/package.json` | ✅ |
+| 14 | `frontend/package.json` | ✅ |
+| 15 | `realtime/package.json` | ✅ |
+| 16 | `backend/tsconfig.json` | ✅ |
+| 17 | `frontend/tsconfig.json` | ✅ |
+| 18 | `realtime/tsconfig.json` | ✅ |
+| 19 | `backend/nest-cli.json` | ✅ |
+| 20 | `frontend/next.config.js` | ✅ |
+| 21 | `backend/src/main.ts` | ✅ |
+| 22 | `backend/src/app.module.ts` | ✅ |
+| 23 | `realtime/src/index.ts` | ✅ |
+| 24 | `.gitignore` | ✅ |
+---
