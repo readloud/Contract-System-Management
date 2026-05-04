@@ -1,13 +1,4 @@
-# 📚 README Lengkap - Contract Management System (CMS) Indonesia
-
-Saya akan membuatkan `README.md` yang lengkap, profesional, dan siap pakai untuk repository CMS Indonesia Anda.
-
----
-
-## 📄 `README.md` (Lengkap)
-
-```markdown
-# 📝 Contract Management System (CMS) Indonesia
+#  📝 Contract Management System (CMS) Indonesia
 
 <div align="center">
 
