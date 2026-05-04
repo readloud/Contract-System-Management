@@ -1,4 +1,4 @@
-#  📝 Contract Management System (CMS) Indonesia
+#  Contract Management System (CMS) Indonesia
 
 <div align="center">
 
@@ -192,12 +192,8 @@
 
 ```bash
 # Clone repository
-git clone https://github.com/your-company/cms-indonesia.git
-cd cms-indonesia
-
-# Atau jika repository private
-git clone git@github.com:your-company/cms-indonesia.git
-cd cms-indonesia
+git clone https://github.com/readloud/Contract-System-Management.git
+cd Contract-System-Management
 ```
 
 ### 2. Setup Environment
@@ -306,8 +302,6 @@ curl http://localhost:3000
 # Seharusnya mengembalikan HTML
 ```
 
----
-
 ## 🔌 Konfigurasi Integrasi
 
 ### PrivyID (PSrE Certified Signature)
@@ -347,7 +341,7 @@ PERURI_CLIENT_SECRET=your_peruri_client_secret
 PERURI_VENDOR_CODE=YOUR_VENDOR_CODE
 ```
 
-### AWS S3 untuk Penyimpanan
+### AWS S3 untuk Penyimpanan Clouds
 
 **Langkah-langkah:**
 
@@ -812,8 +806,10 @@ docker stats
 - **Data Sovereignty**: Data tersimpan di server Indonesia (AWS Jakarta)
 - **Enkripsi**: AES-256 untuk data at rest, TLS 1.3 untuk in transit
 
+---
 
 ### Deployment Checklist Production
+
 |---------------|--------------------|
 | NEXT_PUBLIC_	| Hanya variabel dengan prefix ini yang tersedia di browser. |
 | JWT_SECRET		| Generate dengan: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))" |
@@ -828,16 +824,15 @@ docker stats
 | Monitoring			| Buka http://your-domain.com:9090 (Prometheus)	☐ |
 | Log Rotation		| Cek docker logs --tail 100 cms-backend-prod	☐ |
 | Health Check		| curl https://your-domain.com/health |
+
 ---
 
 ## 🤝 Kontribusi
 
-Kami menyambut kontribusi dari developer! Berikut panduan kontribusi:
-
 ```bash
 # 1. Fork repository
 # 2. Clone fork Anda
-git clone https://github.com/readloud/cms-indonesia.git
+git clone https://github.com/readloud/Contract-System-Management.git
 
 # 3. Buat branch fitur
 git checkout -b feature/amazing-feature
@@ -885,9 +880,5 @@ Proyek ini adalah **proprietary software**. Hak cipta dilindungi undang-undang.
 
 **Made by ReadLoud for Indonesia's Digital Transformation**
 
-© 2026 CMS Indonesia. All rights reserved.
-
 </div>
 ```
-
----
