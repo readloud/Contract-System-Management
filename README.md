@@ -1,6 +1,6 @@
-#  Contract Management System (CMS) Indonesia
-
 <div align="center">
+  
+#  Contract Management System (CMS) Indonesia
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![Node](https://img.shields.io/badge/node-20.x-green.svg)
@@ -810,20 +810,19 @@ docker stats
 
 ### Deployment Checklist Production
 
-|---------------|--------------------|
-| NEXT_PUBLIC_	| Hanya variabel dengan prefix ini yang tersedia di browser. |
-| JWT_SECRET		| Generate dengan: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))" |
-| PSrE Provider	| Pilih salah satu: PrivyID, VIDA, atau Tilaka. Jangan gunakan semua di production |
-| e-Meterai		| Gunakan Peruri untuk legal validity tertinggi, Mitrakas sebagai alternatif |
-| Production		| Jangan pernah commit .env.production ke repository! Gunakan secret manager (AWS Secrets Manager, HashiCorp Vault) |
-| SSL Certificate		| sudo certbot certonly --standalone -d your-domain.com	☐ |
-| Database Migration	| docker exec cms-backend-prod npm run migration:run	☐ |
-| Seed Data			| docker exec cms-backend-prod npm run seed	☐ |
-| Firewall Rules		| sudo ufw allow 80,443/tcp	☐ |
-| Backup Schedule		| Cek docker logs cms-postgres-backup	☐ |
-| Monitoring			| Buka http://your-domain.com:9090 (Prometheus)	☐ |
-| Log Rotation		| Cek docker logs --tail 100 cms-backend-prod	☐ |
-| Health Check		| curl https://your-domain.com/health |
+ * NEXT_PUBLIC_	> Hanya variabel dengan prefix ini yang tersedia di browser. 
+ * JWT_SECRET		> Generate dengan: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))" 
+ * PSrE Provider	> Pilih salah satu: PrivyID, VIDA, atau Tilaka. Jangan gunakan semua di production 
+ * e-Meterai		> Gunakan Peruri untuk legal validity tertinggi, Mitrakas sebagai alternatif 
+ * Production		> Jangan pernah commit .env.production ke repository! Gunakan secret manager (AWS Secrets Manager, HashiCorp Vault) 
+ * SSL Certificate		> sudo certbot certonly --standalone -d your-domain.com	☐ 
+ * Database Migration	> docker exec cms-backend-prod npm run migration:run	☐ 
+ * Seed Data			> docker exec cms-backend-prod npm run seed	☐ 
+ * Firewall Rules		> sudo ufw allow 80,443/tcp	☐ 
+ * Backup Schedule		> Cek docker logs cms-postgres-backup	☐ 
+ * Monitoring			> Buka http://your-domain.com:9090 (Prometheus)	☐ 
+ * Log Rotation		> Cek docker logs --tail 100 cms-backend-prod	☐ 
+ * Health Check		> curl https://your-domain.com/health 
 
 ---
 
@@ -881,4 +880,3 @@ Proyek ini adalah **proprietary software**. Hak cipta dilindungi undang-undang.
 **Made by ReadLoud for Indonesia's Digital Transformation**
 
 </div>
-```
