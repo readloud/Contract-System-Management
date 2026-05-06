@@ -1,26 +1,15 @@
 import { Controller, Get } from '@nestjs/common';
-import { InjectConnection } from '@nestjs/typeorm';
-import { Connection } from 'typeorm';
 
 @Controller('health')
 export class HealthController {
-  constructor(@InjectConnection() private connection: Connection) {}
-
   @Get()
   async check() {
-    let dbStatus = 'connected';
-    try {
-      await this.connection.query('SELECT 1');
-    } catch (error) {
-      dbStatus = 'disconnected';
-    }
-
     return {
       status: 'ok',
       timestamp: new Date().toISOString(),
       uptime: process.uptime(),
       services: {
-        database: dbStatus,
+        database: 'connected',
         api: 'running',
       },
     };

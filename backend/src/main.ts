@@ -21,10 +21,7 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       transform: true,
-      forbidNonWhitelisted: true,
-      transformOptions: {
-        enableImplicitConversion: true,
-      },
+      forbidNonWhitelisted: false,
     }),
   );
 
@@ -39,4 +36,7 @@ async function bootstrap() {
   logger.log(`📝 Environment: ${configService.get('NODE_ENV')}`);
 }
 
-bootstrap();
+bootstrap().catch((err) => {
+  console.error('Failed to start application:', err);
+  process.exit(1);
+});

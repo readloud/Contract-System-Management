@@ -45,18 +45,56 @@ REDIS_PASSWORD=SecureRedis123!
 JWT_SECRET=super_secret_jwt_key_min_32_chars_here
 EOF
 
-# 4. Install dependencies untuk setiap service
+# 1. Cek versi npm
+npm --version
+# Output: 11.13.0
+
+# 2. Install dependencies untuk setiap service
 cd backend && npm install && cd ..
 cd frontend && npm install && cd ..
 cd realtime && npm install && cd ..
 
-# 5. Build dan jalankan dengan Docker
-docker-compose up --build
+# 3. Cek file: package-lock.json di folder
+ls -la backend/package-lock.json
+ls -la frontend/package-lock.json
+ls -la realtime/package-lock.json
 
-# 6. Atau jika ingin langsung development tanpa Docker
-# Backend
-cd backend && npm run start:dev &
-# Frontend
-cd frontend && npm run dev &
-# Realtime
-cd realtime && npm run start:dev &
+# 4. Setup backend
+#cd backend
+#rm -rf node_modules package-lock.json
+#npm install
+
+# 3. Setup frontend
+#cd ../frontend
+#rm -rf node_modules package-lock.json
+#npm install
+
+# 6. Setup realtime
+#cd ../realtime
+#rm -rf node_modules package-lock.json
+#npm install
+# package-lock.json akan terbuat otomatis dengan lockfileVersion: 3
+
+# 7. Jika ingin langsung development tanpa Docker
+#cd backend && npm run start:dev &
+#cd frontend && npm run dev &
+#cd realtime && npm run start:dev &
+
+# Cek lockfileVersion di package-lock.json
+head -10 backend/package-lock.json | grep lockfileVersion
+# Harusnya: "lockfileVersion": 3
+
+# Cek npm version di container
+docker run --rm node:20-alpine npm --version
+
+# 6. Jalankan
+#cd ..
+#docker compose up
+
+# 5. Kembali ke root dan build Docker
+#cd ..
+#docker compose build --no-cache
+
+# Build tanpa error
+cd ..
+docker compose build --progress=plain 2>&1 | grep -i "error" || echo "✅ No errors!"

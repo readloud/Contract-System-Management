@@ -1,0 +1,47 @@
+# ============================================
+# DOCKER COMPOSE SETUP - No version attribute
+# Hanya untuk generate package-lock.json
+# ============================================
+
+services:
+  backend-setup:
+    image: node:20-alpine
+    container_name: cms-backend-setup
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    command: >
+      sh -c "
+        echo '🔧 Setting up backend...';
+        npm install --package-lock-only;
+        echo '✅ package-lock.json created in backend folder';
+        ls -la /app/package-lock.json
+      "
+
+  frontend-setup:
+    image: node:20-alpine
+    container_name: cms-frontend-setup
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    command: >
+      sh -c "
+        echo '🔧 Setting up frontend...';
+        npm install --package-lock-only --legacy-peer-deps;
+        echo '✅ package-lock.json created in frontend folder';
+        ls -la /app/package-lock.json
+      "
+
+  realtime-setup:
+    image: node:20-alpine
+    container_name: cms-realtime-setup
+    working_dir: /app
+    volumes:
+      - ./realtime:/app
+    command: >
+      sh -c "
+        echo '🔧 Setting up realtime...';
+        npm install --package-lock-only;
+        echo '✅ package-lock.json created in realtime folder';
+        ls -la /app/package-lock.json
+      "

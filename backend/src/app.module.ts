@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BullModule } from '@nestjs/bull';
 import { ScheduleModule } from '@nestjs/schedule';
+import { HealthController } from './health.controller';
 
 @Module({
   imports: [
@@ -22,8 +23,9 @@ import { ScheduleModule } from '@nestjs/schedule';
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: configService.get('NODE_ENV') !== 'production',
         logging: configService.get('NODE_ENV') === 'development',
-        migrations: [__dirname + '/database/migrations/*{.ts,.js}'],
-        migrationsRun: true,
+        retryAttempts: 10,
+        retryDelay: 3000,
+        autoLoadEntities: true,
       }),
       inject: [ConfigService],
     }),
@@ -32,7 +34,7 @@ import { ScheduleModule } from '@nestjs/schedule';
       useFactory: (configService: ConfigService) => ({
         redis: {
           host: configService.get('REDIS_HOST', 'localhost'),
-          port: configService.get('REDIS_PORT', 6379),
+          port: parseInt(configService.get('REDIS_PORT', '6379')),
           password: configService.get('REDIS_PASSWORD'),
         },
       }),
@@ -40,5 +42,6 @@ import { ScheduleModule } from '@nestjs/schedule';
     }),
     ScheduleModule.forRoot(),
   ],
+  controllers: [HealthController],
 })
 export class AppModule {}
