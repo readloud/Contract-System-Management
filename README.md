@@ -856,14 +856,6 @@ git push origin feature/amazing-feature
 
 ## 📄 Lisensi
 
-Proyek ini adalah **proprietary software**. Hak cipta dilindungi undang-undang.
-
-**Tidak diizinkan:**
-- Menyalin, memodifikasi, atau mendistribusikan tanpa izin tertulis
-- Menggunakan untuk tujuan komersial tanpa lisensi
-
-**Untuk lisensi komersial**, hubungi: **legal@cms-indonesia.com**
-
 ---
 
 ## 🙏 Acknowledgments
