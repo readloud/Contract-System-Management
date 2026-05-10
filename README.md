@@ -856,6 +856,8 @@ git push origin feature/amazing-feature
 
 ## 📄 Lisensi
 
+MIT License - see [LICENSE](LICENSE) file
+
 ---
 
 ## 🙏 Acknowledgments
